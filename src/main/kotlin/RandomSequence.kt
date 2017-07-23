@@ -1,4 +1,4 @@
-package com.mantono.www.security
+package com.mantono.pyttipanna
 
 import java.security.SecureRandom
 import java.util.*
@@ -11,7 +11,7 @@ private const val SPECIAL_CHARS = "!@#%/=-_$[](){}£^*+;:<>,."
 private val SEED_SOURCE: Array<Char> = "$DIGITS$LOWER_CASE$UPPER_CASE$SPECIAL_CHARS".toCharArray().toTypedArray()
 private val LAST_INDEX: Byte = SEED_SOURCE.lastIndex.toByte()
 
-private val rand: Random = SecureRandom()
+private val rand: Random = SecureRandom.getInstance("SHA1PRNG")
 
 const val BINARY: Byte = 2
 const val HEX: Byte = 16

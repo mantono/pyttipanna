@@ -1,4 +1,4 @@
-package com.mantono.www.security
+package com.mantono.pyttipanna
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertTrue
