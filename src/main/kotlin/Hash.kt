@@ -24,14 +24,14 @@ fun hash(data: String, algorithm: Algorithm = Algorithm.SHA512): ByteArray
 	return hash(data.toByteArray(utf8), algorithm = algorithm)
 }
 
-fun hash(data: ByteArray, salt: ByteArray = emptyByteArray(), algorithm: Algorithm = Algorithm.SHA512): ByteArray
+fun hash(data: ByteArray, salt: ByteArray = emptyByteArray, algorithm: Algorithm = Algorithm.SHA512): ByteArray
 {
 	val digest = algorithm.instance
 	digest.update(salt)
 	return digest.digest(data)
 }
 
-private fun emptyByteArray(): ByteArray = emptyArray<Byte>().toByteArray()
+private val emptyByteArray: ByteArray = emptyArray<Byte>().toByteArray()
 
 fun ByteArray.toHex(): String
 {
