@@ -9,7 +9,7 @@ private const val DIGITS = "0123456789"
 private const val SPECIAL_CHARS = "!@#%/=-_$[](){}£^*+;:<>,."
 
 private val SEED_SOURCE: Array<Char> = "$DIGITS$LOWER_CASE$UPPER_CASE$SPECIAL_CHARS".toCharArray().toTypedArray()
-private val LAST_INDEX: Byte = SEED_SOURCE.lastIndex.toByte()
+val MAX_ENTROPY: Byte = SEED_SOURCE.lastIndex.toByte()
 
 private val rand: Random = SecureRandom.getInstance("SHA1PRNG")
 
@@ -17,7 +17,7 @@ const val BINARY: Byte = 2
 const val HEX: Byte = 16
 val NO_SPECIAL_CHARS: Byte = (DIGITS.length + LOWER_CASE.length + UPPER_CASE.length).toByte()
 
-fun generate(length: Int = 16, entropy: Byte = LAST_INDEX): CharSequence
+fun generate(length: Int = 16, entropy: Byte = MAX_ENTROPY): CharSequence
 {
 	val chars = randomChar(entropy)
 			.take(length)
@@ -27,9 +27,9 @@ fun generate(length: Int = 16, entropy: Byte = LAST_INDEX): CharSequence
 	return String(chars)
 }
 
-fun randomChar(entropy: Byte = LAST_INDEX): Sequence<Char> = generateSequence()
+fun randomChar(entropy: Byte = MAX_ENTROPY): Sequence<Char> = generateSequence()
 {
-	val max: Int = entropy.coerceIn(1, LAST_INDEX).toInt()
+	val max: Int = entropy.coerceIn(1, MAX_ENTROPY).toInt()
 	val index: Int = rand.nextInt(max)
 	SEED_SOURCE[index]
 }
