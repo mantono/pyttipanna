@@ -44,6 +44,12 @@ fun ByteArray.toHex(): String
 	return String(s)
 }
 
+fun ByteArray.toBase64(): String
+{
+	val encoded: ByteArray = java.util.Base64.getEncoder().encode(this)
+	return String(encoded)
+}
+
 fun String.toUtf8Bytes(): ByteArray
 {
 	val utf8 = Charset.forName("UTF-8")
