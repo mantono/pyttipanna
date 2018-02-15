@@ -33,34 +33,8 @@ fun hash(data: ByteArray, salt: ByteArray = emptyByteArray, algorithm: Algorithm
 
 private val emptyByteArray: ByteArray = emptyArray<Byte>().toByteArray()
 
-fun ByteArray.toHex(): String
-{
-	val s = asSequence()
-			.map(::hexList)
-			.flatMap { it.asSequence() }
-			.toList()
-			.toCharArray()
-
-	return String(s)
-}
-
-fun ByteArray.toBase64(): String
-{
-	val encoded: ByteArray = java.util.Base64.getEncoder().encode(this)
-	return String(encoded)
-}
-
 fun String.toUtf8Bytes(): ByteArray
 {
 	val utf8 = Charset.forName("UTF-8")
 	return toByteArray(utf8)
-}
-
-private fun hexList(byte: Byte): List<Char>
-{
-	val x = (byte.toInt() shr 4) and 0xF
-	val y = byte.toInt() and 0xF
-	val charX = Character.forDigit(x, 16)
-	val charY = Character.forDigit(y, 16)
-	return listOf(charX, charY)
 }

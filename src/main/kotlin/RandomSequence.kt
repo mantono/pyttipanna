@@ -33,3 +33,10 @@ fun randomChar(entropy: Byte = MAX_ENTROPY): Sequence<Char> = generateSequence()
 	val index: Int = rand.nextInt(max)
 	SEED_SOURCE[index]
 }
+
+fun randomByte(): Sequence<Byte> = generateSequence()
+{
+	val array: ByteArray = ByteArray(1, { 0 })
+	rand.nextBytes(array)
+	array[0]
+}

@@ -3,6 +3,7 @@ package com.mantono.pyttipanna
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
+import toHex
 
 class HashTest
 {
