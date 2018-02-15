@@ -5,9 +5,9 @@ description = 'description of project'
 defaultTasks 'test'
 
 buildscript {
-    ext.kotlin_version = '1.1.4-2'
+    ext.kotlin_version = '1.2.21'
     ext.jvm_version = '1.8'
-    ext.junit_platform_version = '1.0.0-M4'
+    ext.junit_platform_version = '1.0.2'
 
     repositories {
         mavenCentral()
@@ -36,12 +36,12 @@ repositories {
 
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version: kotlin_version
-    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-jdk8', version: '0.17'
-    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.17'
+    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-jdk8', version: '0.22.2'
+    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.22.2'
     compile 'org.slf4j:slf4j-simple:1.7.21'
-    compile 'io.github.microutils:kotlin-logging:1.4.5'
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0-M4'
-    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.0.0-M4'
+    compile 'io.github.microutils:kotlin-logging:1.4.9'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.2'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.0.2'
 }
 
 junitPlatform {
@@ -105,5 +105,5 @@ task fatJar(type: Jar) {
 
 task wrapper(type: Wrapper) {
     description = 'Generates gradlew[.bat] scripts for faster execution'
-    gradleVersion = '4.0'
+    gradleVersion = '4.5'
 }
