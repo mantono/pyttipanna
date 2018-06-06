@@ -10,15 +10,18 @@ buildscript {
     ext.junit_platform_version = '1.1.0'
 
     repositories {
+        jcenter()
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.junit.platform:junit-platform-gradle-plugin:$junit_platform_version"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.17"
     }
 }
 
+apply plugin: 'org.jetbrains.dokka'
 apply plugin: 'kotlin'
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -61,6 +64,18 @@ kotlin {
     experimental {
         coroutines 'enable'
     }
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "doc"
+    jdkVersion = 8
+}
+
+task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+    outputFormat = 'javadoc'
+    outputDirectory = javadoc.destinationDir
+    inputs.dir 'src/main/kotlin'
 }
 
 // Important: All classes containing test cases must match the
