@@ -41,10 +41,10 @@ dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version: kotlin_version
     compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-jdk8', version: '0.22.2'
     compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.22.2'
-    compile 'org.slf4j:slf4j-simple:1.7.21'
-    compile 'io.github.microutils:kotlin-logging:1.4.9'
-    compile "commons-codec:commons-codec:1.11"
-    compile "commons-codec:commons-codec:1.11:javadoc"
+    implementation 'io.github.microutils:kotlin-logging:1.4.9'
+    implementation "commons-codec:commons-codec:1.11"
+    implementation "commons-codec:commons-codec:1.11:javadoc"
+    runtime 'org.slf4j:slf4j-simple:1.7.21'
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
 }
