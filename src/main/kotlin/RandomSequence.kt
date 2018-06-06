@@ -40,3 +40,8 @@ fun randomByte(): Sequence<Byte> = generateSequence()
 	rand.nextBytes(array)
 	array[0]
 }
+
+
+fun randomBytes(bytes: Int): ByteArray = ByteArray(bytes).apply {
+	rand.nextBytes(this)
+}
