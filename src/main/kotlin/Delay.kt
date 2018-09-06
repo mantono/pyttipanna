@@ -3,11 +3,15 @@ package com.mantono.pyttipanna
 import kotlinx.coroutines.experimental.delay
 import java.security.SecureRandom
 import java.util.*
+import java.util.concurrent.TimeUnit
 
-suspend fun randomDelay(maxDelayMs: Int = 300): Int
+suspend fun randomDelay(
+		maxDelay: Int = 50,
+		unit: TimeUnit = TimeUnit.MILLISECONDS,
+		random: Random = SecureRandom()
+): Int
 {
-	val r: Random = SecureRandom()
-	val sleep = r.nextInt(maxDelayMs)
-	delay(sleep.toLong())
+	val sleep = random.nextInt(maxDelay)
+	delay(sleep.toLong(), unit)
 	return sleep
 }
