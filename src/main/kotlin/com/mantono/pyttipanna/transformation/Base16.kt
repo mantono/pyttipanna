@@ -1,8 +1,6 @@
 package com.mantono.pyttipanna.transformation
 
-import org.apache.commons.codec.binary.Base32
-
-fun ByteArray.toHex(): String
+fun ByteArray.toBase16(): String
 {
 	val s = asSequence()
 			.map(::hexList)
@@ -11,14 +9,6 @@ fun ByteArray.toHex(): String
 			.toCharArray()
 
 	return String(s)
-}
-
-fun ByteArray.toBase32(): String = Base32().encodeAsString(this)
-
-fun ByteArray.toBase64(): String
-{
-	val encoded: ByteArray = java.util.Base64.getEncoder().encode(this)
-	return String(encoded)
 }
 
 private fun hexList(byte: Byte): List<Char>

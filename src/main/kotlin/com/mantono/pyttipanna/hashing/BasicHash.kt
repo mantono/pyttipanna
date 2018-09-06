@@ -1,4 +1,4 @@
-package com.mantono.pyttipanna
+package com.mantono.pyttipanna.hashing
 
 import java.nio.charset.Charset
 import java.security.MessageDigest

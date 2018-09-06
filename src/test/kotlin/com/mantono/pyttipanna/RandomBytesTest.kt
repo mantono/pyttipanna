@@ -1,5 +1,6 @@
 package com.mantono.pyttipanna
 
+import com.mantono.pyttipanna.randomness.randomBytes
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

@@ -1,4 +1,4 @@
-package com.mantono.pyttipanna
+package com.mantono.pyttipanna.hashing
 
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec

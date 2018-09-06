@@ -1,5 +1,7 @@
 package com.mantono.pyttipanna
 
+import com.mantono.pyttipanna.hashing.HashAlgorithm
+import com.mantono.pyttipanna.hashing.hash
 import com.mantono.pyttipanna.transformation.toHex
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals

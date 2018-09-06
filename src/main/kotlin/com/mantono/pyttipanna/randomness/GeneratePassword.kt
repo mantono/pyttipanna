@@ -1,4 +1,4 @@
-package com.mantono.pyttipanna
+package com.mantono.pyttipanna.randomness
 
 fun main(args: Array<String>)
 {

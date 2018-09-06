@@ -1,5 +1,6 @@
 package com.mantono.pyttipanna
 
+import com.mantono.pyttipanna.hashing.secureHash
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
