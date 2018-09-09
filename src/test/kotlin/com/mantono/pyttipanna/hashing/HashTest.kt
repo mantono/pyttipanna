@@ -1,4 +1,4 @@
-package com.mantono.pyttipanna
+package com.mantono.pyttipanna.hashing
 
 import com.mantono.pyttipanna.hashing.HashAlgorithm
 import com.mantono.pyttipanna.hashing.hash

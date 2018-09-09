@@ -1,6 +1,7 @@
-package com.mantono.pyttipanna
+package com.mantono.pyttipanna.hashing
 
-import com.mantono.pyttipanna.hashing.secureHash
+import com.mantono.pyttipanna.assertArrayNotEquals
+import com.mantono.pyttipanna.clockTime
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
