@@ -7,17 +7,17 @@ const val DEFAULT_HASH_ITERATIONS = 200
 const val DEFAULT_HASH_LENGTH = 64
 
 fun secureHash(
-		data: String,
-		salt: ByteArray,
-		iterations: Int = DEFAULT_HASH_ITERATIONS,
-		length: Int = DEFAULT_HASH_LENGTH
+	data: String,
+	salt: ByteArray,
+	iterations: Int = DEFAULT_HASH_ITERATIONS,
+	length: Int = DEFAULT_HASH_LENGTH
 ): ByteArray = secureHash(data.toCharArray(), salt, iterations, length)
 
 fun secureHash(
-		data: ByteArray,
-		salt: ByteArray,
-		iterations: Int = DEFAULT_HASH_ITERATIONS,
-		length: Int = DEFAULT_HASH_LENGTH
+	data: ByteArray,
+	salt: ByteArray,
+	iterations: Int = DEFAULT_HASH_ITERATIONS,
+	length: Int = DEFAULT_HASH_LENGTH
 ): ByteArray = secureHash(String(data).toCharArray(), salt, iterations, length)
 
 /**
@@ -31,12 +31,11 @@ fun secureHash(
  * set to 8 bytes (64 bits) and default value is [DEFAULT_HASH_LENGTH]
  */
 fun secureHash(
-		data: CharArray,
-		salt: ByteArray,
-		iterations: Int = DEFAULT_HASH_ITERATIONS,
-		length: Int = DEFAULT_HASH_LENGTH
-): ByteArray
-{
+	data: CharArray,
+	salt: ByteArray,
+	iterations: Int = DEFAULT_HASH_ITERATIONS,
+	length: Int = DEFAULT_HASH_LENGTH
+): ByteArray {
 	require(length >= 4) { "Length must be at least 4, but it was $length" }
 	val keySpec = PBEKeySpec(data, salt, iterations, length * 8)
 	val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")

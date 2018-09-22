@@ -17,25 +17,22 @@ const val BINARY: Byte = 2
 const val HEX: Byte = 16
 val NO_SPECIAL_CHARS: Byte = (DIGITS.length + LOWER_CASE.length + UPPER_CASE.length).toByte()
 
-fun generate(length: Int = 16, entropy: Byte = MAX_ENTROPY): CharSequence
-{
+fun generate(length: Int = 16, entropy: Byte = MAX_ENTROPY): CharSequence {
 	val chars = randomChar(entropy)
-			.take(length)
-			.toList()
-			.toCharArray()
+		.take(length)
+		.toList()
+		.toCharArray()
 
 	return String(chars)
 }
 
-fun randomChar(entropy: Byte = MAX_ENTROPY): Sequence<Char> = generateSequence()
-{
+fun randomChar(entropy: Byte = MAX_ENTROPY): Sequence<Char> = generateSequence {
 	val max: Int = entropy.coerceIn(1, MAX_ENTROPY).toInt()
 	val index: Int = rand.nextInt(max)
 	SEED_SOURCE[index]
 }
 
-fun randomByte(): Sequence<Byte> = generateSequence()
-{
+fun randomByte(): Sequence<Byte> = generateSequence {
 	val array: ByteArray = ByteArray(1) { 0 }
 	rand.nextBytes(array)
 	array[0]
