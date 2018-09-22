@@ -1,27 +1,20 @@
 package com.mantono.pyttipanna.transformation
 
-import java.util.*
+private typealias ApacheBase16 = org.apache.commons.codec.binary.Hex
 
 @Suppress("EXPERIMENTAL_FEATURE_WARNING")
 inline class Base16(override val bytes: ByteArray): Bytes
 {
-	override fun equals(other: Any?): Boolean = this.isEqual(other)
-	override fun hashCode(): Int = Arrays.hashCode(bytes)
-	override fun toString(): String = bytes.asSequence()
-			.map(::hexList)
-			.flatMap { it.asSequence() }
-			.toList()
-			.toCharArray()
-			.let { String(it) }
-}
+	constructor(base16: String): this(ApacheBase16.decodeHex(base16))
 
-private fun hexList(byte: Byte): List<Char>
-{
-	val x = (byte.toInt() shr 4) and 0xF
-	val y = byte.toInt() and 0xF
-	val charX = Character.forDigit(x, 16)
-	val charY = Character.forDigit(y, 16)
-	return listOf(charX, charY)
+	override fun toString(): String = ApacheBase16.encodeHexString(bytes)
+
+	companion object
+	{
+		private val hexRegex = Regex("^([\\da-f][\\da-f])*\$")
+
+		fun validate(s: String): Boolean = s.matches(hexRegex)
+	}
 }
 
 fun ByteArray.toBase16(): Base16 = Base16(this)
