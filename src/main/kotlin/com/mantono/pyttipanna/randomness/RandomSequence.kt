@@ -36,7 +36,7 @@ fun randomChar(entropy: Byte = MAX_ENTROPY): Sequence<Char> = generateSequence()
 
 fun randomByte(): Sequence<Byte> = generateSequence()
 {
-	val array: ByteArray = ByteArray(1, { 0 })
+	val array: ByteArray = ByteArray(1) { 0 }
 	rand.nextBytes(array)
 	array[0]
 }

@@ -58,8 +58,8 @@ class SecureHashTest
 	@Test
 	fun testThatIterationsIncreasesHashingTime()
 	{
-		val faster: Long = clockTime { secureHash(pass1, salt1, 400) }
-		val slower: Long = clockTime { secureHash(pass1, salt1, 800) }
+		val faster: Long = clockTime { secureHash(pass1, salt1, 300) }
+		val slower: Long = clockTime { secureHash(pass1, salt1, 900) }
 		assertTrue(faster < slower) { "$faster >= $slower" }
 	}
 
