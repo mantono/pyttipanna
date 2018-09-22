@@ -1,5 +1,6 @@
 package com.mantono.pyttipanna
 
+import java.time.Duration
 import java.time.Instant
 import java.util.*
 
@@ -15,10 +16,10 @@ internal inline fun clockTime(repeat: Int = 200, funcToTime: () -> Unit): Long
 {
 	return (0 until repeat)
 			.map {
-				val start = Instant.now().toEpochMilli()
+				val start = Instant.now()
 				funcToTime()
-				val end = Instant.now().toEpochMilli()
-				end - start
+				val end = Instant.now()
+				Duration.between(start, end).toNanos()
 			}
 			.average()
 			.toLong()
