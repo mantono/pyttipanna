@@ -1,6 +1,6 @@
 package com.mantono.pyttipanna
 
-import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.delay
 import java.security.SecureRandom
 import java.util.*
 import java.util.concurrent.TimeUnit
