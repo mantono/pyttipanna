@@ -5,6 +5,6 @@ import org.junit.jupiter.api.Test
 class Base16Test {
 	@Test
 	fun testFromByteArrayToStringAndBack() {
-		byteArrayToStringToBytes<Base16> { b -> Base16(b) }
+		testByteTransformer(functionUnderTest = Base16)
 	}
 }
