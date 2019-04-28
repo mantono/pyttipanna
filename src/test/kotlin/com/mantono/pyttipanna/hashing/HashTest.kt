@@ -35,4 +35,16 @@ class HashTest {
 			"ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff"
 		assertNotEquals(hashSha512, x)
 	}
+
+	@Test
+	fun testHashNoStateOnMessageDigest() {
+		val algorithm: HashAlgorithm = HashAlgorithm.SHA256
+		val bytes = hash("test", "some salt", algorithm)
+		algorithm.instance().update(bytes)
+		val s0: ByteArray = hash("test", "some salt", algorithm)
+		val x0: String = Base16.asString(s0)
+		val s1: ByteArray = hash("test", "some salt", algorithm)
+		val x1: String = Base16.asString(s1)
+		assertEquals(x0, x1)
+	}
 }

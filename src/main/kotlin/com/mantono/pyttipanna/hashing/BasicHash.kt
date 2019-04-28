@@ -5,13 +5,19 @@ import java.security.MessageDigest
 
 enum class HashAlgorithm(
 	val hashFunction: String,
+	@Deprecated(
+		message = "MessageDigest keeps state, use function invocation instance() instead",
+		replaceWith = ReplaceWith("instance()", "com.mantono.pyttipanna.hashing")
+	)
 	val instance: MessageDigest = MessageDigest.getInstance(hashFunction)
 ) {
 	MD5("MD5"),
 	SHA1("SHA-1"),
 	SHA256("SHA-256"),
 	SHA384("SHA-384"),
-	SHA512("SHA-512")
+	SHA512("SHA-512");
+
+	fun instance(): MessageDigest = MessageDigest.getInstance(hashFunction)
 }
 
 fun hash(data: String, salt: String, algorithm: HashAlgorithm = HashAlgorithm.SHA512): ByteArray =
@@ -27,7 +33,7 @@ fun hash(
 	salt: ByteArray = emptyByteArray,
 	algorithm: HashAlgorithm = HashAlgorithm.SHA512
 ): ByteArray {
-	val digest = algorithm.instance
+	val digest = algorithm.instance()
 	digest.update(salt)
 	return digest.digest(data)
 }
